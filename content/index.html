@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/angular-1.8.2/angular.min.js"></script>
+    <link rel="stylesheet" href="/content/css/styles.css"/>
+
+</head>
+<body ng-init="numbers=[1,2,3,4,5]; color='orange'">
+    <input type="text" ng-model="favMeat" placeholder="Qual a sua carne favorita?"/>
+    <p>A carne favorita é: {{favMeat}}</p>-
+    <p>O primeiro número é {{numbers[2]}} e a soma do primeiro com o último número é {{numbers[0]+ numbers[4]}}</p>
+    <p class="{{color}}">Olá, mundo laranja</p>
+</body>
+</html> 
