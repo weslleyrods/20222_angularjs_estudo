@@ -9,10 +9,15 @@
     <link rel="stylesheet" href="/content/css/styles.css"/>
 
 </head>
-<body ng-init="numbers=[1,2,3,4,5]; color='orange'">
+<body ng-init="numbers=[1,2,3,4,5]; 
+    color='orange'; 
+    nomes=['João', 'Maria','José', 'Weslley']">
     <input type="text" ng-model="favMeat" placeholder="Qual a sua carne favorita?"/>
     <p>A carne favorita é: {{favMeat}}</p>-
     <p>O primeiro número é {{numbers[2]}} e a soma do primeiro com o último número é {{numbers[0]+ numbers[4]}}</p>
     <p class="{{color}}">Olá, mundo laranja</p>
+    <ul>
+        <li ng-repeat="nome in nomes">{{nome}}</li>
+    </ul>
 </body>
 </html> 
