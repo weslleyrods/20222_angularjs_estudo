@@ -13,12 +13,20 @@
 <body>
     <ng-include src="'header.html'"></ng-include>
     <header ng-include="'header.html'"></header>
-    <div ng-controller="MyFirstAppController">
-        <p>{{message}}</p>
-        <input ng-model="search"/>
-        <ul>
-            <li ng-repeat="nome in nomes | orderBy: 'nome' | filter: search">{{nome.nome}} - {{nome.preco | currency: 'R$'}}</li>
-        </ul>
+    <div class="content">
+        <div ng-controller="MyFirstAppController">
+            <p>{{message}}</p>
+            <button ng-click="order = 'nome'">Ordernar por nome</button>
+            <button ng-click="order = ' cinto'">Ordernar por cor do cinto</button> 
+
+            <input ng-model="search" placeholder="Procure por um nome"/>
+            <ul>
+                <li ng-repeat="nome in nomes | orderBy: order | filter: search" ng-show="nome.disponivel">{{nome.nome}} - {{nome.preco | currency: 'R$'}}
+                    <div class="remove" ng-click="removerNome(nome)">x</div>
+                    <span class="belt" style="background: {{nome.cinto}}">Cinto {{nome.cinto}}</span>
+                </li>
+            </ul>
+        </div>
     </div>
-</body> 
+    </body> 
 </html> 

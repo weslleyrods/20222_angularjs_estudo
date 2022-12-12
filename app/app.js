@@ -15,22 +15,28 @@ myFirstApp.run(()=>{
 myFirstApp.controller('MyFirstAppController', ['$scope',($scope)=>{
     //todo código que será disparado quando o controller for chamado
 
-    $scope.message= "Olá Mundo!"
+    $scope.removerNome = (nome)=>{
+        const nomeRemovido =    $scope.nomes.indexOf(nome)
+        $scope.nomes.splice(nomeRemovido, 1)
+    }
     $scope.nomes = [
         {
         nome: "João",
-        cinto: "Preto",
-        preco: 100
+        cinto: "black",
+        preco: 100,
+        disponivel: true
     },
     {
         nome: "Maria",
-        cinto: "Branco",
-        preco: 50
+        cinto: "white",
+        preco: 50,
+        disponivel: false
     },
     {
         nome: "José",
-        cinto: "Azul",
-        preco: 80
+        cinto: "blue",
+        preco: 80,
+        disponivel: true
     }]
     
 }]) 
