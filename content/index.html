@@ -11,11 +11,14 @@
 
 </head>
 <body>
+    <ng-include src="'header.html'"></ng-include>
+    <header ng-include="'header.html'"></header>
     <div ng-controller="MyFirstAppController">
         <p>{{message}}</p>
+        <input ng-model="search"/>
         <ul>
-            <li ng-repeat="nome in nomes">{{nome}}</li>
+            <li ng-repeat="nome in nomes | orderBy: 'nome' | filter: search">{{nome.nome}} - {{nome.preco | currency: 'R$'}}</li>
         </ul>
     </div>
-</body>
+</body> 
 </html> 
