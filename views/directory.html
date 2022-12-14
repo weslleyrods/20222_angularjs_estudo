@@ -1,0 +1,14 @@
+<div class="content">
+    <div ng-controller="MyFirstAppController">
+        <button ng-click="order = 'nome'">Ordernar por nome</button>
+        <button ng-click="order = ' cinto'">Ordernar por cor do cinto</button> 
+
+        <input ng-model="search" placeholder="Procure por um nome"/>
+        <ul>
+            <li ng-repeat="nome in nomes | orderBy: order | filter: search" ng-show="nome.disponivel">{{nome.nome}} - {{nome.preco | currency: 'R$'}}
+                <div class="remove" ng-click="removerNome(nome)">x</div>
+                <span class="belt" ">Cinto {{nome.cinto}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
