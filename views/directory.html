@@ -1,14 +1,20 @@
 <div class="content">
-    <div ng-controller="MyFirstAppController">
         <button ng-click="order = 'nome'">Ordernar por nome</button>
-        <button ng-click="order = ' cinto'">Ordernar por cor do cinto</button> 
-
+        <button ng-click="order = 'cinto'">Ordernar por cor do cinto</button> 
         <input ng-model="search" placeholder="Procure por um nome"/>
         <ul>
-            <li ng-repeat="nome in nomes | orderBy: order | filter: search" ng-show="nome.disponivel">{{nome.nome}} - {{nome.preco | currency: 'R$'}}
+            <li ng-repeat="nome in nomes | orderBy: order | filter: search" ng-show="nome.disponivel">             
+                <img ng-src="{{nome.thumb}}" style="margin: -12px 10px 0 0; float: left; width: 35px;" 
+                ng-show="nome.thumb"/>
+                <h3>{{nome.nome}} - {{nome.preco | currency: 'R$'}}</h3>
                 <div class="remove" ng-click="removerNome(nome)">x</div>
-                <span class="belt" ">Cinto {{nome.cinto}}</span>
+                <span class="belt">Cinto {{nome.cinto}}</span>
             </li>
         </ul>
-    </div>
-</div>
+        <form ng-submit="adicionarNome()">
+            <input type="text" ng-model="novoNome.nome" placeholder="Nome"/>
+            <input type="text" ng-model="novoNome.cinto" placeholder="Cor do cinto"/>
+            <input type="text" ng-model="novoNome.preco" placeholder="Preço"/>
+            <input type="submit" value="Adicionar"/>
+        </form>
+        image.png</div>

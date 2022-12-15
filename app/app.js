@@ -2,52 +2,67 @@
 const myFirstApp = angular.module('myFirstApp',['ngRoute'])//[] é um array de dependências
 
 //todo código que será disparado antes de iniciar a aplicação
-myFirstApp.config(['$routeProvider', ($routeProvider)=>{
+myFirstApp.config(['$routeProvider',   '$locationProvider',  function($routeProvider, $locationProvider){
+    $locationProvider.hashPrefix('')
 
     $routeProvider
         .when('/home', {
-            templateUrl: 'views/home.html',
-        })
-        .when('/directory', {
-            templateUrl: 'views/directory.html',
+            templateUrl: '/views/home.html',
             controller: 'MyFirstAppController'
         })
-        .otherwise({
-            redirectTo: '/home'
-        });
-    }
-])
+        .when('/directory', {
+            templateUrl: '/views/directory.html',
+            controller: 'MyFirstAppController'
+        }).otherwise({
+            templateUrl: '/views/home.html',
+    })
+}])
 
-myFirstApp.run(()=>{
-
+myFirstApp.run(function(){
     //todo código que seŕa dispara quando a aplicação iniciar
 })
 
-myFirstApp.controller('MyFirstAppController', ['$scope',($scope)=>{
+myFirstApp.controller('MyFirstAppController', ['$scope',function($scope){
     //todo código que será disparado quando o controller for chamado
 
-    $scope.removerNome = (nome)=>{
-        const nomeRemovido =    $scope.nomes.indexOf(nome)
+    $scope.adicionarNome = function(){
+        $scope.nomes.push({
+            nome: $scope.novoNome.nome,
+            cinto: $scope.novoNome.cinto,
+            preco: parseInt($scope.novoNome.preco),
+            disponivel: true,
+        })
+        $scope.novoNome.nome = ""
+        $scope.novoNome.cinto = ""
+        $scope.novoNome.preco = ""
+    }
+
+    $scope.removerNome = function(nome){
+        const nomeRemovido = $scope.nomes.indexOf(nome)
         $scope.nomes.splice(nomeRemovido, 1)
     }
+
     $scope.nomes = [
         {
         nome: "João",
-        cinto: "black",
+        cinto: "preto",
         preco: 100,
-        disponivel: true
+        disponivel: true,
+        thumb: "/content/img/joao.jpeg"
     },
     {
         nome: "Maria",
-        cinto: "white",
+        cinto: "branco",
         preco: 50,
-        disponivel: false
+        disponivel: true,
+        thumb: "/content/img/maria.jpeg"
     },
     {
         nome: "José",
-        cinto: "blue",
+        cinto: "azul",
         preco: 80,
-        disponivel: true
+        disponivel: true,
+        thumb: "/content/img/jose.jpeg"
     }]
     
 }]) 
